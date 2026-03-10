@@ -1,0 +1,169 @@
+/* OVERLAY OSCURO */
+.drawerOverlayUsuarios {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(2px);
+
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+/* PANEL LATERAL */
+.drawerPanelUsuarios {
+  width: 420px;
+  height: 100%;
+  background: white;
+
+  padding: 40px 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  box-shadow: -8px 0 40px rgba(0,0,0,0.2);
+  border-left: 6px solid var(--primary);
+
+  animation: abrirDrawerUsuarios 0.25s ease;
+}
+
+/* ANIMACIÓN */
+@keyframes abrirDrawerUsuarios {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* TITULO */
+.drawerPanelUsuarios h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+
+/* NOMBRE USUARIO */
+.drawerPanelUsuarios p {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* LABEL */
+.drawerPanelUsuarios label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--secondary);
+}
+
+/* SELECT */
+.drawerPanelUsuarios select {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 15px;
+
+  border: 2px solid var(--input-border);
+  border-radius: var(--radius-sm);
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  background: #fdfdfd;
+
+  transition: var(--transition);
+}
+
+.drawerPanelUsuarios select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+
+  box-shadow: 0 0 0 4px rgba(0,184,148,0.12);
+}
+
+/* BOTONES */
+.drawerBotonesUsuarios {
+  margin-top: 30px;
+
+  display: flex;
+  gap: 12px;
+}
+
+/* BOTON GUARDAR */
+.drawerGuardar {
+  flex: 1;
+  height: 45px;
+
+  background: var(--primary);
+  color: white;
+
+  border: none;
+  border-radius: 50px;
+
+  font-weight: 800;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.drawerGuardar:hover {
+  background: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+/* BOTON CANCELAR */
+.drawerCancelar {
+  flex: 1;
+  height: 45px;
+
+  background: #f1f2f6;
+  color: var(--secondary);
+
+  border: none;
+  border-radius: 50px;
+
+  font-weight: 800;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.drawerCancelar:hover {
+  background: #dcdde1;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+
+  .drawerPanelUsuarios{
+    width:100%;
+    border-left:none;
+    border-top:6px solid var(--primary);
+  }
+
+}
+.botonEliminarUsuario{
+  padding: 8px 16px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 800;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    margin: 5px;
+}

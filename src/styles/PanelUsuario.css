@@ -1,0 +1,96 @@
+@import "./Variables.css";
+
+* {
+  box-sizing: border-box;
+}
+
+.perfil-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-main);
+  padding: 60px 24px;
+}
+
+.perfil-card {
+  width: 100%;
+  max-width: 1000px;
+  background: white;
+  padding: 60px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  border-top: 8px solid var(--primary);
+}
+
+.perfil-info {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#panelUsuario-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background-color: #fcfcfc;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+#panelUsuario-info:hover {
+  border-color: var(--primary);
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+#panelUsuario-info-datos {
+  flex: 1;
+}
+
+#panelUsuario-info-datos p:first-child {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--secondary);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+#panelUsuario-info-datos p:not(:first-child) {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.botonEditarUsuario {
+  padding: 16px 40px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.botonEditarUsuario:hover {
+  background-color: var(--primary-dark);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+}
+
+@media (max-width: 800px) {
+  .perfil-card {
+    padding: 40px 20px;
+  }
+
+  #panelUsuario-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+}

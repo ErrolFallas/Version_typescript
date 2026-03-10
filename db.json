@@ -1,0 +1,188 @@
+{
+  "usuario": [
+    {
+      "id": "4d0a",
+      "nombre": "ErrolD",
+      "correo": "errol@gmail.com",
+      "contraseña": "123456",
+      "rol": "Admin"
+    },
+    {
+      "id": "2004",
+      "nombre": "hirai momo ",
+      "correo": "momo@gmail.com",
+      "contraseña": "12345678",
+      "rol": "Cliente"
+    },
+    {
+      "id": "10d2",
+      "nombre": "sarai",
+      "correo": "sarsteph03@gmail.com",
+      "contraseña": "123456",
+      "rol": "Cliente"
+    },
+    {
+      "id": "c123",
+      "nombre": "Fressia",
+      "correo": "frefre@gmail.com",
+      "contraseña": "123456",
+      "rol": "Cliente"
+    }
+  ],
+  "producto": [
+    {
+      "producto": " sandia",
+      "categoria": "frutas",
+      "precio": "1500",
+      "id": "00d6",
+      "stock": "78"
+    },
+    {
+      "id": "6553",
+      "producto": "leche",
+      "categoria": "lacteos",
+      "precio": "1000",
+      "stock": "0"
+    },
+    {
+      "id": "e8e7",
+      "producto": "Tuttos",
+      "categoria": "snacks",
+      "precio": "1000",
+      "stock": "53"
+    },
+    {
+      "id": "d928",
+      "producto": "jabón",
+      "categoria": "cuidadoPersonal",
+      "precio": "800",
+      "stock": "200"
+    },
+    {
+      "id": "6073",
+      "producto": "cereal ",
+      "categoria": "snacks",
+      "precio": "1200",
+      "stock": "45"
+    },
+    {
+      "id": "c872",
+      "producto": "donas",
+      "categoria": "panaderia",
+      "precio": "800",
+      "stock": "20"
+    },
+    {
+      "id": "c810",
+      "producto": "res",
+      "categoria": "carnes",
+      "precio": "3000",
+      "stock": "6"
+    },
+    {
+      "producto": "yogurt",
+      "categoria": "lacteos",
+      "precio": "600",
+      "id": "9c74",
+      "stock": "30"
+    },
+    {
+      "id": "424a",
+      "producto": "vino",
+      "categoria": "licores",
+      "precio": "8600",
+      "stock": "60"
+    },
+    {
+      "producto": "Toro negro",
+      "categoria": "licores",
+      "precio": "7000",
+      "id": "ac9e",
+      "stock": "80"
+    },
+    {
+      "id": "3e8d",
+      "producto": "Cloroo",
+      "categoria": "limpieza",
+      "precio": "3000",
+      "stock": "30"
+    },
+    {
+      "id": "c6f1",
+      "producto": "manzana",
+      "categoria": "frutas",
+      "precio": "400",
+      "stock": "24"
+    },
+    {
+      "id": "ef34",
+      "producto": "Perfume",
+      "categoria": "cuidadopersonal",
+      "precio": "5000",
+      "stock": "5"
+    },
+    {
+      "id": "a836",
+      "producto": "Pasta de dientes",
+      "categoria": "cuidadopersonal",
+      "precio": "800",
+      "stock": "50"
+    },
+    {
+      "id": "79b6",
+      "producto": "Piña",
+      "categoria": "frutas",
+      "precio": "1999",
+      "stock": "25"
+    },
+    {
+      "id": "afd7",
+      "producto": "Crema de cabello",
+      "categoria": "cuidadopersonal",
+      "precio": "5000",
+      "stock": "46"
+    },
+    {
+      "id": "481f",
+      "producto": "Perfume ",
+      "categoria": "cuidadopersonal",
+      "precio": "6000",
+      "stock": "48"
+    },
+    {
+      "id": "f047",
+      "producto": "Pollo rey",
+      "categoria": "carnes",
+      "precio": "3000",
+      "stock": "23"
+    },
+    {
+      "id": "858c",
+      "producto": "Pastel de zanahorita",
+      "categoria": "panaderia",
+      "precio": "2000",
+      "stock": "3"
+    },
+    {
+      "id": "f560",
+      "producto": "pastel de fresas",
+      "categoria": "panaderia",
+      "precio": "2500",
+      "stock": "3"
+    },
+    {
+      "id": "d212",
+      "producto": "paquete de rumbas",
+      "categoria": "snacks",
+      "precio": "1200",
+      "stock": "28"
+    },
+    {
+      "id": "d04c",
+      "producto": "tomates ",
+      "categoria": "frutas",
+      "precio": "500",
+      "stock": "6"
+    }
+  ]
+}

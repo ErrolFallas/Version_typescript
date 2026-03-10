@@ -1,0 +1,212 @@
+@import "./Variables.css";
+
+* {
+    box-sizing: border-box;
+}
+
+#dashboaradmin {
+    padding: 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    background-color: var(--bg-main);
+    min-height: 100vh;
+}
+
+/* ADMIN FORM */
+#dashboaradmin-registroProductos {
+    background: white;
+    padding: 60px 40px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border-left: 10px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+#dashboaradmin-registroProductos>br {
+    display: none;
+}
+
+#dashboaradmin-registroProductos label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#dashboaradmin-registroProductos input,
+#dashboaradmin-registroProductos select {
+    width: 100%;
+    height: 52px;
+    padding: 0 20px;
+    border: 2px solid var(--input-border);
+    border-radius: var(--radius-sm);
+    background: #fdfdfd;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+#dashboaradmin-registroProductos input:focus,
+#dashboaradmin-registroProductos select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 5px rgba(0, 184, 148, 0.1);
+}
+
+#dashboaradmin-registroProductos button {
+    height: 48px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 10px;
+}
+
+/* TABLE BUTTONS */
+.botonesModificar,
+.botonEliminarProducto,
+.botonEditarProducto {
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 800;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    margin: 5px;
+}
+
+.botonesModificar,
+.botonesModificar {
+    background-color: var(--accent);
+    color: var(--secondary);
+}
+
+.botonEliminarProducto {
+    background-color: #d35252;
+    color: white;
+}
+
+.botonEditarProducto {
+    background-color: #5ec749;
+    color: white;
+}
+
+.botonesModificar:hover,
+.botonesModificar:hover {
+    background-color: var(--accent-dark);
+    transform: scale(1.05);
+}
+
+.botonEliminarProducto:hover {
+    background-color: #d63031;
+    transform: scale(1.05);
+}
+
+.botonEditarProducto:hover {
+    background-color: #044d0a;
+    transform: scale(1.05);
+}
+/* ADMIN TABLE */
+#dashboaradmin-listaProductos {
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    border: 1px solid var(--input-border);
+}
+
+#dashboaradmin-listaProductos-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#dashboaradmin-listaProductos-thead {
+    background-color: var(--secondary);
+    color: white;
+}
+
+#dashboaradmin-listaProductos-thead th {
+    padding: 24px 30px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+#dashboaradmin-listaProductos-tbody tr {
+    border-bottom: 1px solid #f1f2f6;
+    transition: var(--transition);
+}
+
+#dashboaradmin-listaProductos-tbody td {
+    padding: 20px 30px;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+#dashboaradmin-listaProductos-tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+#dashboaradmin-listaProductos-tbody td:last-child {
+    font-weight: 800;
+    color: var(--primary-dark);
+}
+.drawerOverlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.4);
+
+  display:flex;
+  justify-content:flex-end;
+}
+
+.drawerPanel{
+  width:350px;
+  height:100%;
+  background:white;
+  padding:25px;
+
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.drawerBotones{
+  margin-top:20px;
+  display:flex;
+  gap:10px;
+}
+@media (max-width: 768px) {
+    #dashboaradmin {
+        padding: 40px 20px;
+    }
+
+    #dashboaradmin-listaProductos {
+        overflow-x: auto;
+    }
+
+    #dashboaradmin-listaProductos-table {
+        min-width: 800px;
+    }
+}
