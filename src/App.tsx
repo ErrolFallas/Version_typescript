@@ -1,8 +1,4 @@
-
-/* import Formulario from "../src/pages/Formulario" */
-import { Routes, Route } from "react-router-dom";
-
-import Routing from "./routes/Routing.jsx";
+import Routing from "./routes/Routing";
 
 function App() {
 

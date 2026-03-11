@@ -1,11 +1,10 @@
-import React from 'react'
-import ServicesUsuario from '../../services/ServicesUsuario.jsx'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import ServicesUsuario from '../../services/ServicesUsuario'
 import Swal from 'sweetalert2';
-import { useState } from 'react'
+import { Usuario } from '../../types/Usuario';
 
 function EditarRolesAdmin() {
-    const [usuariosRegistrados, setUsuariosRegistrados] = useState([])
+    const [usuariosRegistrados, setUsuariosRegistrados] = useState<Usuario[]>([])
 
 
     useEffect(() => {
@@ -16,7 +15,7 @@ function EditarRolesAdmin() {
         cargarRolesUsuario()
     }, [])
 
-    async function botonEliminarUsuario(id) { /* eliminar producto del stock */
+    async function botonEliminarUsuario(id: string | number) { /* eliminar producto del stock */
         const resultado = await Swal.fire({
             title: "¿Seguro que quieres eliminar este usuario?",
             text: "Esta acción no se puede deshacer",
@@ -33,22 +32,22 @@ function EditarRolesAdmin() {
 
         }
     }
-    const [drawerAbierto, setDrawerAbierto] = useState(false)
-    const [gestionarUsuario, setGestionarUsuario] = useState(null) /* variable de estado que inicialmente no tiene ningún usuario, no se ha seleccionado ningun usuario en su estado inicial y al tocar el usuario le dice a cual usuario va manipular */
-    const [editarRol, setEditarRol] = useState("")
+    const [drawerAbierto, setDrawerAbierto] = useState<boolean>(false)
+    const [gestionarUsuario, setGestionarUsuario] = useState<Usuario | null>(null) /* variable de estado que inicialmente no tiene ningún usuario, no se ha seleccionado ningun usuario en su estado inicial y al tocar el usuario le dice a cual usuario va manipular */
+    const [editarRol, setEditarRol] = useState<string>("")
 
 
-    function abrirDrawer(usuario) { /* se prepara el panel de edición */
+    function abrirDrawer(usuario: Usuario) { /* se prepara el panel de edición */
         setGestionarUsuario(usuario) /* el nuevo valor de gestionarUsuario es toda la informacion del usuario y es muy importante definir esto, porque es el id que se va usar para el patch, es como hacer un get y el let, ahora tiene el valor o datos del db.json, es como su representante en este componente */
         setEditarRol(usuario.rol) /* el select tendrá el valor actual */
         setDrawerAbierto(true) /* solo si es true se abre el drawer y activa el render condicional */
     }
 
     async function realizarCambioRol() {
+        if (!gestionarUsuario || !gestionarUsuario.id || !editarRol) return
         const informacionActualizada = {
             rol: editarRol
         }
-        if (!gestionarUsuario  || !editarRol) return
         await ServicesUsuario.updatePatchUsuario(gestionarUsuario.id, informacionActualizada)
         Swal.fire("Rol actualizado", "", "success")
         let usuariosAlmacenados = await ServicesUsuario.getUsuario()
@@ -69,7 +68,7 @@ function EditarRolesAdmin() {
                     </div>
                     <div id='botonesModificarRoles'>
                         <button onClick={() => abrirDrawer(usuario)} className="botonEditarUsuario" >Editar Roles</button>
-                        <button className='botonEliminarUsuario' onClick={() => botonEliminarUsuario(usuario.id)} >Eliminar usuario</button>
+                        <button className='botonEliminarUsuario' onClick={() => usuario.id && botonEliminarUsuario(usuario.id)} >Eliminar usuario</button>
                     </div>
                 </div>
             )}

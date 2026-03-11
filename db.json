@@ -27,6 +27,13 @@
       "correo": "frefre@gmail.com",
       "contraseña": "123456",
       "rol": "Cliente"
+    },
+    {
+      "id": "990b",
+      "nombre": "German",
+      "correo": "german@gmail.com",
+      "contraseña": "123456",
+      "rol": "Cliente"
     }
   ],
   "producto": [
@@ -183,6 +190,27 @@
       "categoria": "frutas",
       "precio": "500",
       "stock": "6"
+    },
+    {
+      "id": "e7ce",
+      "producto": "Zumo de zanahoria",
+      "categoria": "bebidas",
+      "precio": 100,
+      "stock": 18
+    },
+    {
+      "id": "4e90",
+      "producto": "Potasa",
+      "categoria": "limpieza",
+      "precio": 21,
+      "stock": 3
+    },
+    {
+      "id": "5f27",
+      "producto": "picaritas",
+      "categoria": "snacks",
+      "precio": 45,
+      "stock": 52
     }
   ]
 }

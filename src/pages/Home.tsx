@@ -1,7 +1,6 @@
-import React from 'react'
-import PaginaInicio from '../components/PaginaInicio.js'
-import Footer from '../components/Footer.js'
-import Navi from '../components/Navi.js'
+import PaginaInicio from '../components/PaginaInicio'
+import Footer from '../components/Footer'
+import Navi from '../components/Navi'
 
 function Home() {
   return (

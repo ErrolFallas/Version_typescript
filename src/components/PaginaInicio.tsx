@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import ServicesProducto from "../services/ServicesProducto.jsx";
+import { useNavigate } from 'react-router-dom';
+import ServicesProducto from "../services/ServicesProducto";
 import { useState, useEffect } from 'react'
+import { Producto } from '../types/producto';
 
 
 function PaginaInicio() {
@@ -9,8 +9,8 @@ function PaginaInicio() {
     async function loginCorrecto() {
         navigate("/RegistroUsuario")
     }
-    const [busquedaCategoriaProductos, setBusquedaCategoriaProductos] = useState("")
-    const [productos, setProductos] = useState([])
+    const [busquedaCategoriaProductos, setBusquedaCategoriaProductos] = useState<string>("")
+    const [productos, setProductos] = useState<Producto[]>([])
 
     useEffect(() => {
         obtenerProductos()
@@ -21,7 +21,7 @@ function PaginaInicio() {
         setProductos(respuesta)
     }
     const productosFiltrados = productos.filter(
-        (producto) => busquedaCategoriaProductos === "" || producto.categoria === busquedaCategoriaProductos
+        (producto: Producto) => busquedaCategoriaProductos === "" || producto.categoria === busquedaCategoriaProductos
     )
 
     let contenidoProductos
@@ -30,7 +30,7 @@ function PaginaInicio() {
         contenidoProductos = <p>No hay productos disponibles en esta categoría.</p>
     }
     else {
-        contenidoProductos = productosFiltrados.map((p) => (
+        contenidoProductos = productosFiltrados.map((p: Producto) => (
             <div key={p.id}>
                 <h3>{p.producto}</h3>
                 <p>Precio: ₡{p.precio}</p>

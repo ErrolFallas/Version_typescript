@@ -1,7 +1,6 @@
-import React from 'react'
-import PanelUsuario from '../components/PanelUsuario.js'
-import Navi from '../components/Navi.js'
-import Footer from '../components/Footer.js'
+import PanelUsuario from '../components/PanelUsuario'
+import Navi from '../components/Navi'
+import Footer from '../components/Footer'
 function PerfilUsuario() {
     return (
         <div>

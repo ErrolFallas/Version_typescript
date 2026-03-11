@@ -1,14 +1,15 @@
-import React from 'react'
 import { useState } from 'react' /* obligatorio para usar Hook del tipo useState, permite renderizar otra vez, tras cada cambio en la experiencia del usuario */
 import { Link, useNavigate } from 'react-router-dom';
+import { Usuario } from '../types/Usuario';
 
 function Navi() {
 
     const navigate = useNavigate()
 
-    const [userLogeado, setUserLogeado] = useState(
-        JSON.parse(localStorage.getItem("usuarioLogueado"))
-    )
+    const [userLogeado, setUserLogeado] = useState<Usuario | null>(() => {
+        const user = localStorage.getItem("usuarioLogueado");
+        return user ? JSON.parse(user) : null;
+    })
 
     const cerrarSesion = () => {
         localStorage.removeItem("usuarioLogueado")
@@ -27,7 +28,7 @@ function Navi() {
                     {/* <Link to="/Formulario">Contact</Link> */}
                     <Link to={"/PanelAdministrador"} id='nav-panelAdmin'>Panel Admin</Link>
                     {/* <Link to="/Formulario">Contact</Link> */}
-                    <Link to={"/PanelGestionUsuarios"}id='nav-panelAdmin'>Panel gestion de usuarios</Link>
+                    <Link to={"/PanelGestionUsuarios"} id='nav-panelAdmin'>Panel gestion de usuarios</Link>
 
                     <button onClick={cerrarSesion} id='nav-cerrarSesion'>Cerrar sesión</button>
                 </>

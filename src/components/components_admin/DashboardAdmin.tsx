@@ -1,24 +1,8 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
-import { Link, useNavigate } from 'react-router-dom';
-import ServicesUsuario from '../../services/ServicesUsuario.jsx'
-import ServicesProducto from "../../services/ServicesProducto.js";
-import { useEffect } from 'react'
+import ServicesProducto from "../../services/ServicesProducto";
+import { Producto, ActualizacionProducto } from '../../types/producto';
 
-type Producto = { /* PascalCase */
-  id?: number
-  producto: string,
-  categoria: string,
-  precio: number,
-  stock: number
-}
-type ActualizacionProducto = {
-  id?: number
-  producto: string,
-  categoria: string,
-  precio: number,
-  stock: number
-}
 function DashboardAdmin() {
 
   const [nombreProducto, setNombreProducto] = useState<string>("")
@@ -60,7 +44,7 @@ function DashboardAdmin() {
             confirmButtonText: 'Aceptar'
           });
         } else {
-          if (precioProducto.includes(".") || precioProducto.includes(",") || precioProducto.includes("e") || stockProducto.includes(".") || stockProducto.includes(",") || stockProducto.includes("e")) {
+          if (precioProducto.toString().includes(".") || precioProducto.toString().includes(",") || precioProducto.toString().includes("e") || stockProducto.toString().includes(".") || stockProducto.toString().includes(",") || stockProducto.toString().includes("e")) {
             Swal.fire({
               title: 'Error',
               text: 'Precio y stock deben ser números enteros sin decimales ni notación científica',
@@ -69,7 +53,7 @@ function DashboardAdmin() {
             });
           } else {
             const datosProducto = await ServicesProducto.getProductos()
-            const productoExiste = datosProducto.find(p => p.producto === nombreProducto)
+            const productoExiste = datosProducto.find((p: Producto) => p.producto === nombreProducto)
             if (productoExiste) {
               Swal.fire({
                 title: '¡error!',
@@ -179,7 +163,7 @@ function DashboardAdmin() {
       })
     }
 
-    if (editarPrecio.includes(".") || editarPrecio.includes(",") || editarPrecio.includes("e") || editarStock.includes(".") || editarStock.includes(",") || editarStock.includes("e")) {
+    if (editarPrecio.toString().includes(".") || editarPrecio.toString().includes(",") || editarPrecio.toString().includes("e") || editarStock.toString().includes(".") || editarStock.toString().includes(",") || editarStock.toString().includes("e")) {
       return Swal.fire({
         title: 'Error',
         text: 'Precio y stock deben ser números enteros sin decimales ni notación científica',
@@ -194,7 +178,7 @@ function DashboardAdmin() {
       precio: editarPrecio,
       stock: editarStock
     }
-    if (!productoEditando) return
+    if (!productoEditando || productoEditando.id === undefined) return
     await ServicesProducto.updatePatchProductos(productoEditando.id, datosActualizados) /* actualizar el db.json */
 
     const informacionProductos = await ServicesProducto.getProductos() /* se vuelven a pedir los productos y renderiza la tabla con el set de abajo */
@@ -231,10 +215,10 @@ function DashboardAdmin() {
         </select>
         <br />
         <label htmlFor="precioProducto">Precio</label>
-        <input type="number" name="precioProducto" id="precioProducto" value={precioProducto} onChange={(evento) => setPrecioProducto(Number(evento.target.value))} />
+        <input type="number" name="precioProducto" id="precioProducto" value={precioProducto === 0 ? "" : precioProducto} onChange={(evento) => setPrecioProducto(evento.target.value === "" ? 0 : Number(evento.target.value))} />
 
         <label htmlFor="stockProducto">Stock</label>
-        <input type="number" name="stockProducto" id="stockProducto" value={stockProducto} onChange={(evento) => setStockProducto(Number(evento.target.value))} />
+        <input type="number" name="stockProducto" id="stockProducto" value={stockProducto === 0 ? "" : stockProducto} onChange={(evento) => setStockProducto(evento.target.value === "" ? 0 : Number(evento.target.value))} />
         <br />
         <button onClick={registroProducto}>Registrar producto</button>
 
@@ -263,7 +247,7 @@ function DashboardAdmin() {
                   <div className="botonesModificar">
                     <button className="botonEditarProducto" onClick={() => abrirDrawer(producto)}>Editar</button>
 
-                    <button onClick={() => botonEliminarProducto(producto.id)} className="botonEliminarProducto" >Eliminar</button>
+                    <button onClick={() => producto.id !== undefined && botonEliminarProducto(producto.id)} className="botonEliminarProducto" >Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -300,10 +284,10 @@ function DashboardAdmin() {
               </select>
 
               <label>Precio</label>
-              <input type="number" value={editarPrecio} onChange={(e) => setEditarPrecio(Number(e.target.value))} />
+              <input type="number" value={editarPrecio === 0 ? "" : editarPrecio} onChange={(e) => setEditarPrecio(e.target.value === "" ? 0 : Number(e.target.value))} />
 
               <label>Stock</label>
-              <input type="number" value={editarStock} onChange={(e) => setEditarStock(Number(e.target.value))} />
+              <input type="number" value={editarStock === 0 ? "" : editarStock} onChange={(e) => setEditarStock(e.target.value === "" ? 0 : Number(e.target.value))} />
 
               <div className="drawerBotones">
                 <button onClick={guardarCambiosProducto}>Guardar cambios</button>

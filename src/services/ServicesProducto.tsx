@@ -1,28 +1,32 @@
+import { Producto, ActualizacionProducto } from "../types/producto";
+
 /* GET es para obtener datos de una url a travez de un fetch y un await */
 
-async function getProductos() {
+async function getProductos(): Promise<Producto[]> {
     try {
         const respuesta = await fetch("http://localhost:3000/producto");/* fetch es una funcion que permite hacer peticiones a una url */
         const datosProyectos = await respuesta.json();/* json es un formato de datos que se utiliza para intercambiar datos entre el servidor y el cliente */
         return datosProyectos;
     } catch (error) {
         console.error("Error al obtener los Productos", error);
+        return [];
     }
 }
 
-async function getProductosID(id) {
+async function getProductosID(id: number | string): Promise<Producto | undefined> {
     try {
         const respuesta = await fetch("http://localhost:3000/producto/" + id);/* fetch es una funcion que permite hacer peticiones a una url */
         const datosProyectos = await respuesta.json();/* json es un formato de datos que se utiliza para intercambiar datos entre el servidor y el cliente */
         return datosProyectos;
     } catch (error) {
         console.error("Error al obtener los Productos", error);
+        return undefined;
     }
 }
 
 
 /* post es para agregar datos mediante parametros a una url*/
-async function postProductos(Productos) {
+async function postProductos(Productos: Producto): Promise<Producto | undefined> {
     try {
         const respuesta = await fetch("http://localhost:3000/producto", { /* Con post se debe abrir una llavem donde especifica el tipo de metodo y el header(siempre se mantiene igual) */
             method: "POST",
@@ -35,12 +39,13 @@ async function postProductos(Productos) {
         return datosProyectos;
     } catch (error) {
         console.error("Error al agregar los Productos", error);
+        return undefined;
     }
 }
 
 
 /* put es para actualizar datos mediante parametros a una url*/
-async function updateProductos(id, Productos) {
+async function updateProductos(id: number | string, Productos: Producto): Promise<Producto | undefined> {
     try {
         const respuesta = await fetch(`http://localhost:3000/producto/${id}`, {
             method: "PUT",
@@ -53,14 +58,15 @@ async function updateProductos(id, Productos) {
         return await respuesta.json();
     } catch (error) {
         console.error("Error al actualizar los Productos", error);
+        return undefined;
     }
 }
 
 
 /* Delete */
-async function deleteProductos(id) {
+async function deleteProductos(id: number | string): Promise<void> {
     try {
-        const respuesta = await fetch(`http://localhost:3000/producto/${id}`, { /* Con put se debe abrir una llavem donde especifica el tipo de metodo y el header(siempre se mantiene igual) */
+        await fetch(`http://localhost:3000/producto/${id}`, { /* Con put se debe abrir una llavem donde especifica el tipo de metodo y el header(siempre se mantiene igual) */
             method: "DELETE",
 
         });
@@ -72,7 +78,7 @@ async function deleteProductos(id) {
 
 
 /* Patch editar */
-async function updatePatchProductos(id, Productos) {
+async function updatePatchProductos(id: number | string, Productos: ActualizacionProducto): Promise<Producto | undefined> {
     try {
         const respuesta = await fetch(`http://localhost:3000/producto/${id}`, {
             method: "PATCH",
@@ -85,6 +91,7 @@ async function updatePatchProductos(id, Productos) {
         return await respuesta.json();
     } catch (error) {
         console.error("Error al actualizar los Productos", error);
+        return undefined;
     }
 }
 

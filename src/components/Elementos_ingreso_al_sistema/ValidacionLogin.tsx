@@ -1,12 +1,12 @@
-import React from 'react'
 import { useState } from 'react' /* obligatorio para usar Hook del tipo useState */
-import ServicesUsuario from '../../services/ServicesUsuario.jsx'
+import ServicesUsuario from '../../services/ServicesUsuario'
 import Swal from 'sweetalert2';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Usuario } from '../../types/Usuario';
 
 function ValidacionLogin() {
-    const [correoGuardado, setCorreoGuardado] = useState("")
-    const [contraseñaGuardado, setContraseñaGuardado] = useState("")
+    const [correoGuardado, setCorreoGuardado] = useState<string>("")
+    const [contraseñaGuardado, setContraseñaGuardado] = useState<string>("")
     const navigate = useNavigate()
 
     async function loginCorrecto() {
@@ -19,7 +19,7 @@ function ValidacionLogin() {
             });
         } else {
             const datosUsuario = await ServicesUsuario.getUsuario()
-            const usuarioRegistrado = datosUsuario.find(usuario => usuario.correo === correoGuardado)
+            const usuarioRegistrado = datosUsuario.find((usuario: Usuario) => usuario.correo === correoGuardado)
             if (!usuarioRegistrado) {
                 Swal.fire({
                     title: "Error",
@@ -28,7 +28,7 @@ function ValidacionLogin() {
                     confirmButtonText: "OK"
                 });
             } else {
-                const credencialesValidas = datosUsuario.find(usuario => usuario.correo === correoGuardado && usuario.contraseña === contraseñaGuardado)
+                const credencialesValidas = datosUsuario.find((usuario: Usuario) => usuario.correo === correoGuardado && usuario.contraseña === contraseñaGuardado)
                 if (!credencialesValidas) {
                     Swal.fire({
                         title: "Error",
@@ -44,10 +44,11 @@ function ValidacionLogin() {
                         icon: "success",
                         confirmButtonText: "OK"
                     }).then(() => {
-                        let tipoUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"))
+                        const userLogRaw = localStorage.getItem("usuarioLogueado");
+                        const tipoUsuario = userLogRaw ? JSON.parse(userLogRaw) : null;
                         /* console.log(tipoUsuario); */
 
-                        if (tipoUsuario.rol === "Admin") {
+                        if (tipoUsuario && tipoUsuario.rol === "Admin") {
                             navigate('/PanelAdministrador')
                         } else {
                             navigate('/PerfilUsuario')

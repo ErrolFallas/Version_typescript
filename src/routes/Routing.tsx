@@ -1,12 +1,11 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import PanelRegistro from "../pages/PanelRegistro.jsx";
-import PerfilUsuario from '../pages/PerfilUsuario.jsx';
-import LoginUsuario from '../pages/LoginUsuario.jsx';
-import Home from '../pages/Home.jsx';
-import EdicionInfoUsuario from '../pages/EdicionInfoUsuario.jsx';
-import PanelAdministrador from '../pages/PanelAdministrador.jsx';
-import EditarRolesAdmin from '../pages/EdicionRolesRegistrados.jsx';
+import PanelRegistro from "../pages/PanelRegistro";
+import PerfilUsuario from '../pages/PerfilUsuario';
+import LoginUsuario from '../pages/LoginUsuario';
+import Home from '../pages/Home';
+import EdicionInfoUsuario from '../pages/EdicionInfoUsuario';
+import PanelAdministrador from '../pages/PanelAdministrador';
+import EditarRolesAdmin from '../pages/EdicionRolesRegistrados';
 
 const Routing = () => {
 
@@ -19,7 +18,7 @@ const Routing = () => {
                 <Route path='/LoginUsuario' element={<LoginUsuario />} />
                 <Route path="/editar/:id" element={<EdicionInfoUsuario />} />
                 <Route path="/PanelAdministrador" element={<PanelAdministrador />} />
-                <Route path='/PanelGestionUsuarios'element={<EditarRolesAdmin/>}/>
+                <Route path='/PanelGestionUsuarios' element={<EditarRolesAdmin />} />
             </Routes>
         </Router>
     )

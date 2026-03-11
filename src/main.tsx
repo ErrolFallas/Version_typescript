@@ -12,11 +12,14 @@ import "./styles/PanelUsuario.css"
 import "./styles/ValidacionLogin.css"
 import "./styles/Variables.css"
 /* import "./styles/EditarUsuario.css" */
-import App from './App.js'
+import App from './App'
 
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  )
+}
