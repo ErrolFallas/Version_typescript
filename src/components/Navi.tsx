@@ -13,6 +13,7 @@ function Navi() {
 
     const cerrarSesion = () => {
         localStorage.removeItem("usuarioLogueado")
+        localStorage.removeItem("token")
         setUserLogeado(null) /* actualizar nav tras cerrarSesion, perfecto si estas en home y cierras seccion, se espera que sigas en home, pero la nav debe cambiar */
         navigate("/") // redirige al login 
     }
