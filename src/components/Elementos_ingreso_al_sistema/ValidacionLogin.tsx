@@ -38,6 +38,7 @@ function ValidacionLogin() {
                     });
                 } else {
                     localStorage.setItem("usuarioLogueado", JSON.stringify(credencialesValidas));
+                    localStorage.setItem("token", "token")
                     Swal.fire({
                         title: "inicio exitoso",
                         text: "credenciales correctas",
